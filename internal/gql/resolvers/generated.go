@@ -33,12 +33,5 @@ func (r *mutationResolver) DeleteUser(ctx context.Context, userID string) (bool,
 type queryResolver struct{ *Resolver }
 
 func (r *queryResolver) Users(ctx context.Context, userID *string) ([]*models.User, error) {
-	records := []*models.User{
-		&models.User{
-			ID:     "ec17af15-e354-440c-a09f-69715fc8b595",
-			Email:  "test@email.com",
-			UserID: "UserID-1",
-		},
-	}
-	return records, nil
+	panic("not implemented")
 }
