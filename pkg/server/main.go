@@ -9,7 +9,7 @@ import (
 	"github.com/3dw1nM0535/go-gql-server/pkg/utils"
 )
 
-// HOST name
+// host name
 var host string
 
 // gqlPath
