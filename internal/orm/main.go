@@ -4,9 +4,10 @@ import (
 	log "github.com/3dw1nM0535/go-gql-server/internal/logger"
 	"github.com/3dw1nM0535/go-gql-server/internal/orm/migration"
 	"github.com/3dw1nM0535/go-gql-server/pkg/utils"
+
 	// Import the database dialect of choice
-	_ "github.com/jinzhu/gorm/dialects/postgres"
 	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/postgres"
 )
 
 var autoMigrate, logMode, seedDB bool
@@ -18,11 +19,11 @@ type ORM struct {
 }
 
 func init() {
-	dialect := utils.MustGet("GORM_DIALECT")
-	dsn := utils.MustGet("GORM_CONNECTION_DSN")
-	seedDB := utils.MustGet("GORM_SEED_DB")
-	logMode := utils.MustGet("GORM_LOGMODE")
-	autoMigrate := utils.MustGet("GORM_AUTOMIGRATE")
+	dialect = utils.MustGet("GORM_DIALECT")
+	dsn = utils.MustGet("GORM_CONNECTION_DSN")
+	seedDB = utils.MustGetBool("GORM_SEED_DB")
+	logMode = utils.MustGetBool("GORM_LOGMODE")
+	autoMigrate = utils.MustGetBool("GORM_AUTOMIGRATE")
 }
 
 // Factory created a DB connection with the selected dialect

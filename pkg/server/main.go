@@ -10,19 +10,8 @@ import (
 )
 
 // host name
-var host string
-
-// gqlPath
-var gqlPath string
-
-// gqlPgPath
-var gqlPgPath string
-
-// isPgEnabled
+var host, gqlPath, gqlPgPath, port string
 var isPgEnabled bool
-
-// PORT number
-var port string
 
 func init() {
 	host = utils.MustGet("GQL_SERVER_HOST")
@@ -45,7 +34,7 @@ func Run() {
 	// Playground handelrs
 	if isPgEnabled {
 		r.GET(gqlPgPath, handlers.PlaygroundHandler(gqlPath))
-		log.Println("GraphLQ Playground @ " + endpoint + gqlPgPath)
+		log.Println("GraphQL Playground @ " + endpoint + gqlPgPath)
 	}
 	r.POST(gqlPath, handlers.GraphqlHandler())
 

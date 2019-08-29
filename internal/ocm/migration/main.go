@@ -9,7 +9,7 @@ import (
 	"gopkg.in/gormigrate.v1"
 )
 
-func updatemigration(db *gorm.DB) error {
+func updateMigration(db *gorm.DB) error {
 	return db.AutoMigrate(
 		&models.User{},
 	).Error
@@ -18,10 +18,10 @@ func updatemigration(db *gorm.DB) error {
 // ServiceAutoMigration migrates all the tables and modifications to the connected source
 func ServiceAutoMigration(db *gorm.DB) error {
 	// Keep a list of migrations
-	m := gormmigrate.New(db, gormigrate.DefaultOptions, nil)
+	m := gormigrate.New(db, gormigrate.DefaultOptions, nil)
 	m.InitSchema(func(db *gorm.DB) error {
 		log.Info("[Migration.InitSchema] Initializing database schema")
-		switch db.Dialect().getName() {
+		switch db.Dialect().GetName() {
 		case "postgres":
 			// Let's create the UUID extension, the user has to have superuser
 			// permision for now
