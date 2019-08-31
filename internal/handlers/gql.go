@@ -4,14 +4,17 @@ import (
 	"github.com/3dw1nM0535/go-gql-server/internal/gql"
 	"github.com/3dw1nM0535/go-gql-server/internal/gql/resolvers"
 	"github.com/99designs/gqlgen/handler"
+	"github.com/3dw1nM0535/go-gql-server/internal/orm"
 	"github.com/gin-gonic/gin"
 )
 
 // GraphqlHandler defined the GQLGen GraphQL server handler
-func GraphqlHandler() gin.HandlerFunc {
+func GraphqlHandler(orm *orm.ORM) gin.HandlerFunc {
 	// New ExecutableSchema and config are in the generated.go file
 	c := gql.Config{
-		Resolvers: &resolvers.Resolver{},
+		Resolvers: &resolvers.Resolver{
+			ORM: orm, // Pass ORM instance in the resolvers
+		},
 	}
 
 	h := handler.GraphQL(gql.NewExecutableSchema(c))

@@ -1,7 +1,9 @@
+// Package orm provides GORM helpers for the creation,
+// migration, and access on the project's database
 package orm
 
 import (
-	log "github.com/3dw1nM0535/go-gql-server/internal/logger"
+	"log"
 	"github.com/3dw1nM0535/go-gql-server/internal/orm/migration"
 	"github.com/3dw1nM0535/go-gql-server/pkg/utils"
 
