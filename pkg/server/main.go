@@ -29,6 +29,7 @@ func Run(orm *orm.ORM) {
 	endpoint := "http://" + host + ":" + port
 
 	r := gin.Default()
+	gin.ForceConsoleColor() // Force console color
 	// Handlers
 	// Simple keep-alive/ping handler
 	r.GET("/ping", handlers.Ping())
