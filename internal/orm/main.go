@@ -4,7 +4,7 @@ package orm
 
 import (
 	"log"
-	"github.com/3dw1nM0535/go-gql-server/internal/orm/migration"
+	"github.com/3dw1nM0535/go-gql-server/internal/orm/migrations"
 	"github.com/3dw1nM0535/go-gql-server/pkg/utils"
 
 	// Import the database dialect of choice

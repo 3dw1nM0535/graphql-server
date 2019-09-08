@@ -3,7 +3,7 @@ package migration
 import (
 	"fmt"
 	"log"
-	"github.com/3dw1nM0535/go-gql-server/internal/orm/migration/jobs"
+	"github.com/3dw1nM0535/go-gql-server/internal/orm/migrations/jobs"
 	"github.com/3dw1nM0535/go-gql-server/internal/orm/models"
 	"github.com/jinzhu/gorm"
 	"gopkg.in/gormigrate.v1"
