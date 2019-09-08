@@ -11,5 +11,5 @@ while [["$#" -gt 0]]; do case $1 in
   *) echo "Unknown parameter passed: $1"; exit 1;;
 esac; shift; done
 
-time go run -v github.com/99designs/gqlgen $1
+time go run -v github.com/99designs/gqlgen
 printf "\nDone.\n\n"

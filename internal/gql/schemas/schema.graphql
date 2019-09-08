@@ -42,5 +42,5 @@ type Mutation {
 
 # Define queries here
 type Query {
-  users(id: ID): [User!]!
+  users(id: ID): Users
 }

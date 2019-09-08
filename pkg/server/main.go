@@ -23,9 +23,10 @@ func init() {
 	isPgEnabled = utils.MustGetBool("GQL_SERVER_GRAPHQL_PLAYGROUND_ENABLED")
 }
 
-// Run spins web server
+// Run spins the server
 func Run(orm *orm.ORM) {
-	log.Info("GORM_CONNECTION_DSN: ", utils.MustGet("GORM_CONNECTION_DSN"))
+	log.Println("GORM_CONNECTION_DSN: ", utils.MustGet("GORM_CONNECTION_DSN"))
+
 	endpoint := "http://" + host + ":" + port
 
 	r := gin.Default()
@@ -34,15 +35,15 @@ func Run(orm *orm.ORM) {
 	// Simple keep-alive/ping handler
 	r.GET("/ping", handlers.Ping())
 
-	// GraphQL handlers
-	// Playground handelrs
+	// GraphQL handler
+	// Playground handler
 	if isPgEnabled {
 		r.GET(gqlPgPath, handlers.PlaygroundHandler(gqlPath))
 		log.Println("GraphQL Playground @ " + endpoint + gqlPgPath)
 	}
 	// Pass ORM instance to the GraphqlHandler
 	r.POST(gqlPath, handlers.GraphqlHandler(orm))
-	log.Info("GraphQL @ " + endpoint + gqlPath)
+	log.Println("GraphQL @ " + endpoint + gqlPath)
 
 	// Log server status
 	log.Println("Running @ " + endpoint)

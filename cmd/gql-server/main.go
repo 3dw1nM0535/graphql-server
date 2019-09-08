@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	// Create a new ORM instance
+	// Create a new ORM instance to pass it to our server
 	orm, err := orm.Factory()
 	if err != nil {
 		log.Panic(err)

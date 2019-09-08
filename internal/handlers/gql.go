@@ -3,8 +3,8 @@ package handlers
 import (
 	"github.com/3dw1nM0535/go-gql-server/internal/gql"
 	"github.com/3dw1nM0535/go-gql-server/internal/gql/resolvers"
-	"github.com/99designs/gqlgen/handler"
 	"github.com/3dw1nM0535/go-gql-server/internal/orm"
+	"github.com/99designs/gqlgen/handler"
 	"github.com/gin-gonic/gin"
 )
 
