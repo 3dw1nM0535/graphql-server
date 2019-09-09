@@ -2,7 +2,8 @@ package resolvers
 
 import (
 	"context"
-	"log"
+
+	log "github.com/3dw1nM0535/go-gql-server/internal/logger"
 
 	"github.com/3dw1nM0535/go-gql-server/internal/gql/models"
 	tf "github.com/3dw1nM0535/go-gql-server/internal/gql/resolvers/transformations"
@@ -30,7 +31,7 @@ func (r *queryResolver) Users(ctx context.Context, id *string) (*models.Users, e
 }
 
 // ## Helper functions
-func userCreateUpdate(r *mutationResolver, input models.User, update bool, ids ...string) (*models.User, error) {
+func userCreateUpdate(r *mutationResolver, input models.UserInput, update bool, ids ...string) (*models.User, error) {
 	dbo, err := tf.GQLInputUserToDBUser(&input, update, ids...)
 	if err != nil {
 		return nil, err
@@ -40,7 +41,7 @@ func userCreateUpdate(r *mutationResolver, input models.User, update bool, ids .
 	if !update {
 		db = db.Create(dbo).First(dbo) // Create the user
 	} else {
-		db = db.Model(&dbo).Update(dbo).First(dbo) // Or update it
+		db = db.Model(&dbo).Update(dbo).First(dbo) // Or update user
 	}
 	gql, err := tf.DBUserToGQLUser(dbo)
 	if err != nil {
@@ -67,7 +68,7 @@ func userList(r *queryResolver, id *string) (*models.User, error) {
 	db = db.Find(&dbRecords).Count(&record.Count)
 	for _, dbRec := range dbRecords {
 		if rec, err := tf.DBUserToGQLUser(dbRec); err != nil {
-			log.Errorfn(entity, err)
+			log.Errorf(entity, err)
 		} else {
 			record.List = append(record.List, rec)
 		}

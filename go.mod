@@ -17,6 +17,7 @@ require (
 	github.com/lib/pq v1.2.0 // indirect
 	github.com/mattn/go-sqlite3 v1.11.0 // indirect
 	github.com/rogpeppe/go-internal v1.3.1 // indirect
+	github.com/sirupsen/logrus v1.4.2
 	github.com/vektah/gqlparser v1.1.2
 	golang.org/x/crypto v0.0.0-20190820162420-60c769a6c586 // indirect
 	golang.org/x/image v0.0.0-20190823064033-3a9bac650e44 // indirect

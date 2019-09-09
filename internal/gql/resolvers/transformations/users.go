@@ -26,7 +26,7 @@ func DBUserToGQLUser(i *dbm.User) (o *gql.User, err error) {
 	return o, err
 }
 
-// GQLInputUserToDBUser transform user object
+// GQLInputUserToDBUser transforms [user] gql input to db model
 func GQLInputUserToDBUser(i *gql.UserInput, update bool, ids ...string) (o *dbm.User, err error) {
 	o = &dbm.User{
 		UserID:      i.UserID,
@@ -44,11 +44,11 @@ func GQLInputUserToDBUser(i *gql.UserInput, update bool, ids ...string) (o *dbm.
 		o.Email = *i.Email
 	}
 	if len(ids) > 0 {
-		upID, err := uuid.FromString(ids[0])
+		updID, err := uuid.FromString(ids[0])
 		if err != nil {
 			return nil, err
 		}
-		o.ID = upID
+		o.ID = updID
 	}
 	return o, err
 }

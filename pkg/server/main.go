@@ -1,7 +1,7 @@
 package server
 
 import (
-	"log"
+	log "github.com/3dw1nM0535/go-gql-server/internal/logger"
 
 	"github.com/3dw1nM0535/go-gql-server/internal/orm"
 
@@ -25,12 +25,11 @@ func init() {
 
 // Run spins the server
 func Run(orm *orm.ORM) {
-	log.Println("GORM_CONNECTION_DSN: ", utils.MustGet("GORM_CONNECTION_DSN"))
+	log.Info("GORM_CONNECTION_DSN: ", utils.MustGet("GORM_CONNECTION_DSN"))
 
 	endpoint := "http://" + host + ":" + port
 
 	r := gin.Default()
-	gin.ForceConsoleColor() // Force console color
 	// Handlers
 	// Simple keep-alive/ping handler
 	r.GET("/ping", handlers.Ping())
@@ -39,14 +38,14 @@ func Run(orm *orm.ORM) {
 	// Playground handler
 	if isPgEnabled {
 		r.GET(gqlPgPath, handlers.PlaygroundHandler(gqlPath))
-		log.Println("GraphQL Playground @ " + endpoint + gqlPgPath)
+		log.Info("GraphQL Playground @ " + endpoint + gqlPgPath)
 	}
 	// Pass ORM instance to the GraphqlHandler
 	r.POST(gqlPath, handlers.GraphqlHandler(orm))
-	log.Println("GraphQL @ " + endpoint + gqlPath)
+	log.Info("GraphQL @ " + endpoint + gqlPath)
 
 	// Log server status
-	log.Println("Running @ " + endpoint)
+	log.Info("Running @ " + endpoint)
 	// Print out and exit(1) to the OS if server panics
-	log.Fatalln(r.Run(host + ":" + port))
+	log.Fatal(r.Run(host + ":" + port))
 }

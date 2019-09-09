@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"log"
+	log "github.com/3dw1nM0535/go-gql-server/internal/logger"
 	"os"
 	"strconv"
 )
@@ -10,7 +10,7 @@ import (
 func MustGet(k string) string {
 	v := os.Getenv(k)
 	if v == "" {
-		log.Panicln("ENV missing, key: " + k)
+		log.Panicf("ENV missing, key: " + k)
 	}
 	return v
 }
@@ -19,11 +19,11 @@ func MustGet(k string) string {
 func MustGetBool(k string) bool {
 	v := os.Getenv(k)
 	if v == "" {
-		log.Panicln("ENV missing, key: " + k)
+		log.Panicf("ENV missing, key: " + k)
 	}
 	b, err := strconv.ParseBool(v)
 	if err != nil {
-		log.Panicln("ENV err: [" + k + "]\n" + err.Error())
+		log.Panicf("ENV err: [" + k + "]\n" + err.Error())
 	}
 	return b
 }

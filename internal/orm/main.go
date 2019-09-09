@@ -3,7 +3,7 @@
 package orm
 
 import (
-	"log"
+	log "github.com/3dw1nM0535/go-gql-server/internal/logger"
 	"github.com/3dw1nM0535/go-gql-server/internal/orm/migrations"
 	"github.com/3dw1nM0535/go-gql-server/pkg/utils"
 
