@@ -13,9 +13,11 @@ require (
 	github.com/google/pprof v0.0.0-20190723021845-34ac40c74b70 // indirect
 	github.com/hashicorp/golang-lru v0.5.3 // indirect
 	github.com/jinzhu/gorm v1.9.10
+	github.com/joho/godotenv v1.3.0
 	github.com/kr/pty v1.1.8 // indirect
 	github.com/lib/pq v1.2.0 // indirect
 	github.com/mattn/go-sqlite3 v1.11.0 // indirect
+	github.com/mdempsky/maligned v0.0.0-20180708014732-6e39bd26a8c8 // indirect
 	github.com/rogpeppe/go-internal v1.3.1 // indirect
 	github.com/sirupsen/logrus v1.4.2
 	github.com/vektah/gqlparser v1.1.2
