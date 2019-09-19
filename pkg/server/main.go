@@ -9,6 +9,7 @@ import (
 
 	"github.com/3dw1nM0535/go-gql-server/internal/handlers"
 	"github.com/3dw1nM0535/go-gql-server/pkg/utils"
+	"github.com/joho/godotenv"
 )
 
 // host name
@@ -16,6 +17,10 @@ var host, gqlPath, gqlPgPath, port string
 var isPgEnabled bool
 
 func init() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file: " + err)
+	}
 	host = utils.MustGet("GQL_SERVER_HOST")
 	port = utils.MustGet("GQL_SERVER_PORT")
 	gqlPath = utils.MustGet("GQL_SERVER_GRAPHQL_PATH")
